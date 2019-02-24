@@ -47,69 +47,34 @@ public class funciones {
     }
 
     public static void RomAra(String numeroRom) { //IV
-        int i = 0, decimal[] = {1000, 500, 100, 50, 10, 5, 1};///factores a dividir 
-        int respuesta = 0;
-        String r = "", NumR[] = {"M", "D", "C", "L", "X", "V", "I"},
-                caracter;///carcteres donde de almacenan el caracter en legtras individuales del numero en romano temporalmente
-
-        while (i < numeroRom.length()) {
-
-            caracter = Character.toString(numeroRom.charAt(i));
-            for (int j = 0; j <= 6; j++) {
-
-                if (caracter.equals(NumR[j])) {//// si la primera letra del numero en romano del usuario es igual al una de lr
-                    ////
-                    if (i + 1 < numeroRom.length()) {  //si hay mas caracteres despues del que se esta en la posición "i" de "numeroRom" 
-                        System.out.println("hOAL AAA"); ///PRINTLN de depuración
-
-                        if (caracter.equals('C')) {                      //Se compara si es c entonces
-                            System.out.println("El if de C, e i =" + i); ///PRINTLN de depuración
-
-                            if (numeroRom.charAt(i + 1) == 'D') {        // Si el siguinte caracter es "D" 
-                                respuesta += 400;                        //entonces se asume que es "CD" osea 400.
-                                i++;                                     // entonces di es "CD" Se salta una letra para segir con el otro numerp
-                                System.out.println("El if de 400. " + respuesta);
-                            } else {                                      //si no 
-                                respuesta += 100;                         //En tonces solo es "C" osea 100.
-                                System.out.println("El if de 100");       // imprecion de depuración
-                            }
-
-                        }
-
-                        if (caracter.equals("X")) {               //entonces si no fue "C" se ve si es "X".
-                            if (numeroRom.charAt(i + 1) == 'L') {        //si despues de La "X" hay una "L"
-                                respuesta += 40;                         //entonces es XL osea 40
-                                i++;                                     //por ser un numero de dos letras de tiene que saltar un letra en el numero romano  
-                                System.out.println("XL es 40");
-                            } else {                                     //Si no entonces
-                                respuesta += 10;                         //el numero es "X" que es 10.
-                            }
-
-                        }
-                        if (caracter.equals("I")) {                     //SI no fue "X" entonces se ve si es "I"
-                            if (numeroRom.charAt(i + 1) == 'V') {       //si despues de La "i" hay una "L"
-                                respuesta += 4;                         //entonces es XL osea 5
-                                i++;                                     //por ser un numero de dos letras de tiene que saltar un letra en el numero romano  
-
-                            } else {                                     //Si no entonces
-                                respuesta += 1;                         // solo es V o 5
-
-                            }
-                            
-                        }
-                    } 
-                    if(i + 1 < numeroRom.length() || numeroRom.length()==1){
-                        
-                        respuesta += decimal[j]; //si ninguna de todas las ecepciones aplica Se asigna las letras individiales en Romano.
-                    }
-
+        int i= 0, decimal[] = {1000, 500, 100, 50, 10, 5, 1};///factores a dividir 
+        int respuesta = 0,error3=0,error1,sum=0;
+        int[] acumulador3 ={0,0,0,0};
+        boolean V = true,error;
+        
+       String r = ""     ;     
+///carcteres donde de almacenan el caracter en legtras individuales del numero en romano temporalmente
+            char rep3[] = {'I', 'X', 'C', 'M'},caracter, NumR[] = {'M', 'D', 'C', 'L', 'X', 'V', 'I'},
+                     NoRep[] = {'V', 'L', 'D',' '},a;
+            char[] caracteres=numeroRom.toCharArray();
+        
+       ///////Analizames si No se super  los carates de maximo 3 apariciones
+        for(i=0;i<numeroRom.length();i++){
+            for(int ii=0;ii<=3;ii++){
+                if(caracteres[i]==rep3[ii]){
+                   acumulador3[ii]=acumulador3[ii]+1;
                 }
-
-            }
-            i++;
+                if (acumulador3[ii]>3){
+                    V=false;
+                    System.out.println("El numero "+rep3[ii]+" se repite mas de 3 veces");
+                }
         }
+        
+            
+        //System.out.println(numeroRom + " es en arabigo: " + respuesta);
 
-        System.out.println(numeroRom + " es en arabigo: " + respuesta);
-
+        }
     }
 }
+
+
