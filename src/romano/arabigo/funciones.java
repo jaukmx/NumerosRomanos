@@ -113,8 +113,8 @@ public class funciones {
                     //vector "XV" tieme mas que es MiNumero[0]=10 > MiNumero[1]=5 entonces   
                     Respuesta += MiNumero[i + 1] + MiNumero[i];                         //Respuesta es igual 10 + 5 = 15.
                     i++;                                                                //Se salta i que a 1.
-                    System.out.println("\n En if 1 " + Respuesta + "Ciclo " + i);
-   //#################### else IF para verios numeros I , II , II
+                  //  System.out.println("\n En if 1 " + Respuesta + "Ciclo " + i);//Print de debug
+   // else IF para verios numeros I , II , II
                 } else if ((i + 1) < numeroRom.length() && MiNumero[i] == MiNumero[i + 1]) {     //Si i es 0, i+1=1 es menor que el largovector "IIIX"
                     //  y tieme mas que es MiNumero[0]=1 = MiNumero[1]=1 entonces 
                     ant = MiNumero[i] + MiNumero[i];
@@ -127,24 +127,30 @@ public class funciones {
                         i++;
                         ///////////////////////////////////////////////////////////////////////////      
                     }
+                    if((i + 1) <= numeroRom.length() && MiNumero[i] < MiNumero[i + 1]){
+                        Respuesta=Respuesta-ant;
+                    }else if((i + 1) <= numeroRom.length() && MiNumero[i] > MiNumero[i + 1]){
+                        Respuesta=Respuesta+ant;
+                    }
                     
-                    Respuesta = Respuesta - ant;
+                   
+                    
 
-                    System.out.println("\n En if 2 " + Respuesta + " Ciclo " + i);
+                   // System.out.println("\n En if 2 " + Respuesta + " Ciclo " + i);//Print de debug
   //####################### IF de comprobacion de Si el numero actual es menor que el sigiente por ejemplo IX##################################
                 } else if ((i + 1) <= numeroRom.length() && MiNumero[i] < MiNumero[i + 1]) {
                     Respuesta = Respuesta - MiNumero[i] + MiNumero[i + 1];
                     i++;
-                    System.out.println("\n En if 3 " + Respuesta + " Ciclo " + i);
+                  //  System.out.println("\n En if 3 " + Respuesta + " Ciclo " + i);//Print de debug
 
                 } else if (i <= numeroRom.length()) {
                     Respuesta += MiNumero[i];
                     i++;
-                    System.out.println("\n En if 4 " + Respuesta + " Ciclo " + i);
+                    //System.out.println("\n En if 4 " + Respuesta + " Ciclo " + i);//Print de debug
                 }
             }
 
-            System.out.println(numeroRom+"en decimal es: " + Respuesta);
+            System.out.println(numeroRom+" en decimal es: " + Respuesta);
 
             //////////////////////////////////////////////////////////////
         }
